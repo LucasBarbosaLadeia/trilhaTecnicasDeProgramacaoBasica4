@@ -23,8 +23,8 @@ class BibliotecaGestao {
 
     obterLivrosDisponiveisOrdenados(): LivroBiblioteca[] {
         return this.livro
-            .filter(livro => livro.disponivel) // Filtra apenas os livros disponíveis
-            .sort((a, b) => a.titulo.localeCompare(b.titulo)); // Ordena alfabeticamente pelo título
+            .filter(livro => livro.disponivel) 
+            .sort((a, b) => a.titulo.localeCompare(b.titulo)); 
     }
 
 

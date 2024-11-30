@@ -1,9 +1,9 @@
-// Classe base abstrata Pagamento
+
 abstract class Pagamento {
     abstract processar(): void;
 }
 
-// Subclasse PagamentoCartao
+
 class PagamentoCartao extends Pagamento {
     private numeroCartao: string;
 
@@ -12,27 +12,22 @@ class PagamentoCartao extends Pagamento {
         this.numeroCartao = numeroCartao;
     }
 
-    private validarCartao(): boolean {
-        // Validação básica: número do cartão com 16 dígitos
-        return /^\d{16}$/.test(this.numeroCartao);
+    private validarCartao() {
+        return this.numeroCartao
+       
     }
 
-    processar(): void {
-        if (this.validarCartao()) {
-            console.log(`Pagamento por cartão aprovado! Número do cartão: ${this.numeroCartao}`);
-        } else {
-            console.log(`Pagamento por cartão recusado: Número inválido!`);
-        }
+    processar() {
+    console.log(`${this.validarCartao()}`)
+          
     }
 }
 
-// Subclasse PagamentoBoleto
+
 class PagamentoBoleto extends Pagamento {
-    private valor: number;
 
     constructor(valor: number) {
         super();
-        this.valor = valor;
     }
 
     private gerarBoleto(): string {
@@ -40,24 +35,24 @@ class PagamentoBoleto extends Pagamento {
     }
     processar() {
         const codigoBoleto = this.gerarBoleto();
-        console.log(`Boleto gerado com sucesso: Código: ${codigoBoleto} | Valor: R$${this.valor.toFixed(2)}`);
+        console.log(`Boleto gerado com sucesso: Código: ${codigoBoleto}`);
     }
 }
 
-// Função para processar os pagamentos
+
 function processarPagamentos(pagamentos: Pagamento[]): void {
     pagamentos.forEach((pagamento) => {
         pagamento.processar();
     });
 }
 
-// Testando o código
+
 const pagamentos: Pagamento[] = [
     new PagamentoCartao("1234567812345678"), 
     new PagamentoCartao("12345"), 
-    new PagamentoBoleto(200.5), 
+    new PagamentoBoleto (200)
+  
 ];
 
 processarPagamentos(pagamentos);
 
-calcularSalarioComBonus(funcionarios);
